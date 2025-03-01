@@ -16,19 +16,9 @@ global most_recent
 bot = discord.Client(intents=intents)
 tree = app_commands.CommandTree(bot)
 
-
-def check_key(key): #return the pair of the guild with most recent
-    for pair in most_recent:
-        if key == pair.get("gid"):
-            print("found")
-            return pair
-    print("no pair")
-    return -1
-
 @tree.command(name="status", description="Check the bot's status")
 async def status(interaction: discord.Interaction):
      await interaction.response.send_message('Donut Machine is working!', ephemeral=True)
-
 
 # event: when the bot is ready
 @bot.event
