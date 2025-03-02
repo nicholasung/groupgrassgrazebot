@@ -16,6 +16,6 @@ Randomized Group Matcher!
 
 
 # Discord Bot Permissions needed
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+![alt text](readme_assets/image.png)
+![alt text](readme_assets/image-1.png)
+![alt text](readme_assets/image-2.png)
