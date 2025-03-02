@@ -3,7 +3,7 @@ WORKDIR /main
 COPY . .
 ARG TOKEN
 ENV TOKEN=$TOKEN
-RUN apk add --no-cache python3 py3-pip openssl=3.1.4-r6
+RUN apk add --no-cache python3 py3-pip openssl
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
 RUN pip install --upgrade pip
