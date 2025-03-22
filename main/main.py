@@ -82,20 +82,26 @@ async def roll(interaction: discord.Interaction):
 
     random.shuffle(to_match)
 
-    counter = 0
     message = ""
-    leftovers = len(to_match) % size
-    while len(to_match) > leftovers + size: #works through the main groups
-        m=to_match[0]
-        message += m.mention + " "
-        counter += 1
-        if counter == size:
-            counter = 0
-            message += '\n\n'
-        to_match.pop(0)
-    for m in (to_match): #deals with leftovers making a group smaller than 2*size
-        message += m.mention + " "
+    groups = make_groups(to_match, size)
+    for group in groups:
+        for member in group:
+            message += member.mention + " "
+        message += '\n\n'
     await interaction.response.send_message(message)
+
+def make_groups(members: list, group_size: int):
+    num_groups = (len(members) + group_size - 1) // group_size # divide and round down
+    result = [[] for _ in range(num_groups)]
+    
+    counter = 0
+    for member in members:
+        result[counter].append(member)
+        counter += 1
+        if counter >= num_groups:
+            counter = 0
+    
+    return result
 
 
 # event: when the bot is ready
